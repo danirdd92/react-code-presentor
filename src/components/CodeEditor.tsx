@@ -1,3 +1,5 @@
+import './CodeEditor.css';
+
 import MonacoEditor from '@monaco-editor/react';
 import prettier from 'prettier';
 import parser from 'prettier/parser-babel';
@@ -12,20 +14,24 @@ export const CodeEditor: React.FC<CodeEditorProps> = ({ input, onChange }) => {
 
 	const onFormatClick = () => {
 		console.log(input);
-		const formattedCode = prettier.format(input, {
-			parser: 'babel',
-			plugins: [parser],
-			useTabs: false,
-			semi: true,
-			singleQuote: true,
-		});
+		const formattedCode = prettier
+			.format(input, {
+				parser: 'babel',
+				plugins: [parser],
+				useTabs: false,
+				semi: true,
+				singleQuote: true,
+			})
+			.replace(/\n$/, '');
 		onEditorChange(formattedCode);
 		console.log(formattedCode);
 	};
 
 	return (
-		<div>
-			<button onClick={onFormatClick}>Format</button>
+		<div className='editor-wrapper'>
+			<button className='button button-format is-primary' onClick={onFormatClick}>
+				Format
+			</button>
 			<MonacoEditor
 				theme='vs-dark'
 				height={500}
@@ -34,6 +40,7 @@ export const CodeEditor: React.FC<CodeEditorProps> = ({ input, onChange }) => {
 				value={input}
 				onChange={onEditorChange}
 				options={{
+					formatOnType: true,
 					minimap: {
 						enabled: false,
 					},
@@ -50,3 +57,4 @@ export const CodeEditor: React.FC<CodeEditorProps> = ({ input, onChange }) => {
 		</div>
 	);
 };
+// Try `npm i --save-dev @types/monaco-jsx-highlighter` if it exists or add a new declaration (.d.ts) file containing `declare module 'monaco-jsx-highlighter';`
