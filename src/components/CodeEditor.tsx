@@ -9,7 +9,7 @@ type CodeEditorProps = {
 	onChange: (input: string) => void;
 };
 
-export const CodeEditor: React.FC<CodeEditorProps> = ({ input, onChange }) => {
+const CodeEditor: React.FC<CodeEditorProps> = ({ input, onChange }) => {
 	const onEditorChange = (code: string | undefined) => onChange(code || '');
 
 	const onFormatClick = () => {
@@ -57,4 +57,5 @@ export const CodeEditor: React.FC<CodeEditorProps> = ({ input, onChange }) => {
 		</div>
 	);
 };
-// Try `npm i --save-dev @types/monaco-jsx-highlighter` if it exists or add a new declaration (.d.ts) file containing `declare module 'monaco-jsx-highlighter';`
+
+export default CodeEditor;
