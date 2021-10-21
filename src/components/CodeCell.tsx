@@ -1,5 +1,5 @@
 import bundle from '../bundler';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Resizable from './Resizable';
 import CodeEditor from './CodeEditor';
 import Preview from './Preview';
@@ -8,10 +8,15 @@ const CodeCell = () => {
 	const [input, setInput] = useState('');
 	const [code, setCode] = useState('');
 
-	const onClick = async () => {
-		const res = await bundle(input);
-		setCode(res || '');
-	};
+	useEffect(() => {
+		const timer = setTimeout(async () => {
+			const res = await bundle(input);
+			setCode(res || '');
+		}, 800);
+		return () => {
+			clearTimeout(timer);
+		};
+	}, [input]);
 
 	return (
 		<Resizable direction='vertical'>

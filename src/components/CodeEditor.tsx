@@ -11,7 +11,6 @@ type CodeEditorProps = {
 
 const CodeEditor: React.FC<CodeEditorProps> = ({ input, onChange }) => {
 	const onEditorChange = (code: string | undefined) => onChange(code || '');
-
 	const onFormatClick = () => {
 		console.log(input);
 		const formattedCode = prettier
@@ -36,7 +35,7 @@ const CodeEditor: React.FC<CodeEditorProps> = ({ input, onChange }) => {
 				theme='vs-dark'
 				height='100%'
 				defaultLanguage='javascript'
-				defaultValue=''
+				defaultValue="const root = document.getElementById('root')"
 				value={input}
 				onChange={onEditorChange}
 				options={{
