@@ -1,6 +1,6 @@
 import * as esbuild from 'esbuild-wasm';
-import { fetchPlugin } from '../plugins/fetch-plugin';
-import { unpkgPathPlugin } from '../plugins/unpkg-path-plugin';
+import { fetchPlugin } from './plugins/fetch-plugin';
+import { unpkgPathPlugin } from './plugins/unpkg-path-plugin';
 
 let isInitialized = false;
 // eslint-disable-next-line import/no-anonymous-default-export
