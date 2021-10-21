@@ -25,8 +25,15 @@ export default async (code: string) => {
 			},
 		});
 
-		return res.outputFiles[0].text;
-	} catch (err) {
-		console.log(err);
+		return {
+			code: res.outputFiles[0].text,
+			err: '',
+		};
+	} catch (err: any) {
+		console.error(err);
+		return {
+			code: '',
+			err: err.message,
+		};
 	}
 };

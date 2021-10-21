@@ -3,9 +3,10 @@ import html from '../utils/html-boiler-plate';
 import { useEffect, useRef } from 'react';
 interface PreviewProps {
 	code: string;
+	errorDetails: string;
 }
 
-const Preview: React.FC<PreviewProps> = ({ code }) => {
+const Preview: React.FC<PreviewProps> = ({ code, errorDetails }) => {
 	const iframe = useRef<any>();
 
 	useEffect(() => {
@@ -18,6 +19,7 @@ const Preview: React.FC<PreviewProps> = ({ code }) => {
 	return (
 		<div className='preview-wrapper'>
 			<iframe title='preview' ref={iframe} sandbox='allow-scripts' srcDoc={html} />
+			{errorDetails && <div className='preview-error'>{errorDetails}</div>}
 		</div>
 	);
 };

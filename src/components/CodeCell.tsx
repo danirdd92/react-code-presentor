@@ -7,11 +7,13 @@ import Preview from './Preview';
 const CodeCell = () => {
 	const [input, setInput] = useState('');
 	const [code, setCode] = useState('');
+	const [error, setError] = useState('');
 
 	useEffect(() => {
 		const timer = setTimeout(async () => {
 			const res = await bundle(input);
-			setCode(res || '');
+			setCode(res.code || '');
+			setError(res.err);
 		}, 800);
 		return () => {
 			clearTimeout(timer);
@@ -24,7 +26,7 @@ const CodeCell = () => {
 				<Resizable direction='horizontal'>
 					<CodeEditor input={input} onChange={(val) => setInput(val)} />
 				</Resizable>
-				<Preview code={code} />
+				<Preview code={code} errorDetails={error} />
 			</div>
 		</Resizable>
 	);

@@ -12,7 +12,6 @@ type CodeEditorProps = {
 const CodeEditor: React.FC<CodeEditorProps> = ({ input, onChange }) => {
 	const onEditorChange = (code: string | undefined) => onChange(code || '');
 	const onFormatClick = () => {
-		console.log(input);
 		const formattedCode = prettier
 			.format(input, {
 				parser: 'babel',
@@ -23,7 +22,6 @@ const CodeEditor: React.FC<CodeEditorProps> = ({ input, onChange }) => {
 			})
 			.replace(/\n$/, '');
 		onEditorChange(formattedCode);
-		console.log(formattedCode);
 	};
 
 	return (
