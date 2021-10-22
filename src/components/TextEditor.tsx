@@ -3,8 +3,6 @@ import './TextEditor.css';
 import MDEditor from '@uiw/react-md-editor';
 import { useState, useEffect, useRef } from 'react';
 
-// Need to change from editor to markdown
-
 const TextEditor: React.FC = () => {
 	const ref = useRef<HTMLDivElement | null>(null);
 	const [text, setText] = useState<string | undefined>('Add Markdown');
