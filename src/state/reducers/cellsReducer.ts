@@ -19,7 +19,7 @@ const initialState: CellsState = {
 	data: {},
 };
 
-const reducer = produce((state: CellsState = initialState, action: Action) => {
+const reducer = produce((state: CellsState = initialState, action: Action): CellsState => {
 	switch (action.type) {
 		case ActionType.UPDATE_CELL:
 			const { id, content } = action.payload;
@@ -36,7 +36,7 @@ const reducer = produce((state: CellsState = initialState, action: Action) => {
 			const currentIndex = state.order.findIndex((id) => id === action.payload.id);
 			const targetIndex = direction === 'up' ? currentIndex - 1 : currentIndex + 1;
 
-			if (targetIndex < 0 || targetIndex > state.order.length - 1) return;
+			if (targetIndex < 0 || targetIndex > state.order.length - 1) return state;
 
 			state.order[currentIndex] = state.order[targetIndex];
 			state.order[targetIndex] = action.payload.id;
