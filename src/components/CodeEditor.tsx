@@ -1,4 +1,4 @@
-import './CodeEditor.css';
+import './styles/code-editor.css';
 
 import MonacoEditor from '@monaco-editor/react';
 import prettier from 'prettier';

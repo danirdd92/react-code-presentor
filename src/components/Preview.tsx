@@ -1,4 +1,4 @@
-import './Preview.css';
+import './styles/preview.css';
 import html from '../utils/html-boiler-plate';
 import { useEffect, useRef } from 'react';
 interface PreviewProps {

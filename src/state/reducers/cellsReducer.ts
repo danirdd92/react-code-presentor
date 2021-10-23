@@ -19,7 +19,7 @@ const initialState: CellsState = {
 	data: {},
 };
 
-const reducer = produce((state: CellsState = initialState, action: Action): CellsState => {
+const reducer = produce((state: CellsState, action: Action): CellsState => {
 	switch (action.type) {
 		case ActionType.UPDATE_CELL:
 			const { id, content } = action.payload;
@@ -53,18 +53,14 @@ const reducer = produce((state: CellsState = initialState, action: Action): Cell
 
 			const index = state.order.findIndex((id) => id === action.payload.id);
 
-			// index not found - push to end of the array
 			if (index < 0) state.order.push(cell.id);
-
-			// found - insert in between existing cells
-			state.order.splice(index, 0, cell.id);
-
+			else state.order.splice(index, 0, cell.id);
 			return state;
 
 		default:
 			return state;
 	}
-});
+}, initialState);
 
 const randomId = () => {
 	return Math.random().toString(36).substring(2, 5);
