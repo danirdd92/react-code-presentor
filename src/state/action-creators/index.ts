@@ -7,8 +7,6 @@ import {
 	InsertCellAfterCellAction,
 	MoveCellAction,
 	UpdateCellAction,
-	BundleStartAction,
-	BundleCompleteAction,
 } from '../actions';
 import { CellTypes } from '../cell';
 import bundle from '../../bundler';
