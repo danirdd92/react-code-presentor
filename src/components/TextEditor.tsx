@@ -38,7 +38,7 @@ const TextEditor: React.FC<TextEditorProps> = ({ cell }) => {
 	return (
 		<div className='text-editor' onClick={() => setEditing(true)}>
 			<div className='card-content'>
-				<MDEditor.Markdown source={content || 'CLICK ME!!!'} />
+				<MDEditor.Markdown source={content || '### Click To Edit'} />
 			</div>
 		</div>
 	);
