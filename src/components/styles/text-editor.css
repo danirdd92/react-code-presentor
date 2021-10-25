@@ -75,3 +75,7 @@
 .w-md-editor-text-pre .bold {
 	color: #d4d4d4 !important;
 }
+
+.card-content {
+	border: 2px #37414b solid;
+}
